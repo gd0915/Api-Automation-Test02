@@ -50,22 +50,31 @@ public class Get05 extends AutomationExerciseBaseUrl {
         System.out.println("brands= " + brands);
 
         //4)Total price of all product is 41864
-        List<String> prices = response.jsonPath().getList("products.findAll{it.price}.price");
+        List<String> prices = response.jsonPath().getList("products.price");
         System.out.println("prices= " + prices);
 
         //1st Way:
         int sum = 0;
         for(String w: prices){
-            sum += Integer.valueOf(w.substring(4));
+            sum += Integer.valueOf(w.replaceAll("[^0-9]",""));
         }
         System.out.println("total price= " + sum);
 
         assertEquals(41864, sum);
 
         //2nd Way:
-        int sum02 = prices.stream().map(t-> Integer.valueOf(t.substring(4))).reduce(0,Math::addExact);
+        int sum02 = prices.stream().map(t-> Integer.valueOf(t.replaceAll("[^0-9]",""))).reduce(0,Math::addExact);
         System.out.println("total price lambda = " + sum02);
         assertEquals(41864, sum02);
+
+        //3rd Way:(hard coding)
+        int sum3 = 0;
+        for(String w:prices) {
+
+            sum3 +=  Integer.valueOf(w.substring(4));
+        }
+        assertEquals(41864, sum3);
+        System.out.println("sum :" + sum3);
 
 
 
