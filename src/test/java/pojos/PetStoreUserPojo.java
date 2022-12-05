@@ -1,5 +1,16 @@
 package pojos;
 
+import base_urls.PetStoreBaseUrl;
+import io.restassured.response.Response;
+import org.codehaus.jackson.map.ObjectMapper;
+import org.junit.jupiter.api.Test;
+
+import java.io.IOException;
+import java.util.ArrayList;
+
+import static io.restassured.RestAssured.given;
+import static org.testng.Assert.assertEquals;
+
 public class PetStoreUserPojo {
     private Integer id;
     private String username;
@@ -101,6 +112,8 @@ public class PetStoreUserPojo {
                 ", userStatus=" + userStatus +
                 '}';
     }
+
+
 }
 /*
 {
