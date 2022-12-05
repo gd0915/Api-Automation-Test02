@@ -14,7 +14,7 @@ import java.util.ArrayList;
 import static io.restassured.RestAssured.given;
 import static org.testng.Assert.assertEquals;
 
-public class Get01 extends PetStoreBaseUrl {
+public class S3Get01 extends PetStoreBaseUrl {
     /*
     Given
             https://petstore.swagger.io/v2/pet:id
