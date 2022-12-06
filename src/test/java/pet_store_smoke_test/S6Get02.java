@@ -11,7 +11,7 @@ import java.io.IOException;
 import static io.restassured.RestAssured.given;
 import static org.testng.Assert.assertEquals;
 
-public class S5Get02 extends PetStoreBaseUrl {
+public class S6Get02 extends PetStoreBaseUrl {
     /*
     Given
             https://petstore.swagger.io/v2/pet:id

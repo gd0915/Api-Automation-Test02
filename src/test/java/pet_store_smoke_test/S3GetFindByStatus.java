@@ -1,22 +1,23 @@
-package get_requests;
+package pet_store_smoke_test;
 
 import base_urls.PetStoreBaseUrl;
 import io.restassured.response.Response;
-import org.hamcrest.Matchers;
 import org.junit.jupiter.api.Test;
+import pojos.Category;
+
+import javax.xml.xpath.XPathEvaluationResult;
 
 import static io.restassured.RestAssured.given;
 import static org.hamcrest.Matchers.*;
 
-
-public class Get03 extends PetStoreBaseUrl {
+public class S3GetFindByStatus extends PetStoreBaseUrl {
     /*
     Print all "available" pets on console by using"https://petstore.swagger.io/" documentation.
     There should be more than 30 "available" pets, "fish" and "doggie" pet names must exist.
     */
     /*
     Given
-            "https://petstore.swagger.io/v2/pet/findByStatus?status=available"
+            https://petstore.swagger.io/v2/pet/findByStatus?status=available
     When
             User sends Get request to the Url
      Then
@@ -26,10 +27,12 @@ public class Get03 extends PetStoreBaseUrl {
       And
             "fish" and "doggie" pet names must exist
      */
+
     @Test
-    public void get03(){
+    public void getFindByStatus(){
         //Set the url
-        spec.pathParams("first", "pet", "second", "findByStatus").queryParam("status", "available");
+        spec.pathParams("first", "pet", "second", "findByStatus").
+                queryParam("status", "available");
 
         //Set the expected data
 
@@ -37,9 +40,17 @@ public class Get03 extends PetStoreBaseUrl {
         Response response = given().spec(spec).when().get("/{first}/{second}");
         response.prettyPrint();
 
-        //Do Assertion
-        response.then().assertThat().statusCode(200).body("name", hasItems("fish", "doggie"),
-                "id", hasSize(greaterThan(30)));
+        //Do assertion
+        response.then().
+                assertThat().
+                statusCode(200).
+                body("id", hasSize(greaterThan(30)),
+                        "name", hasItems("doggie", "fish"));
+
+
+
+
+
 
 
     }
