@@ -1,9 +1,9 @@
 package pet_store_smoke_test;
 
 import base_urls.PetStoreBaseUrl;
-import io.restassured.http.ContentType;
 import io.restassured.response.Response;
 import org.codehaus.jackson.map.ObjectMapper;
+import org.junit.jupiter.api.Order;
 import org.junit.jupiter.api.Test;
 import pojos.Category;
 import pojos.PetStorePetPojo;
@@ -15,58 +15,40 @@ import java.util.ArrayList;
 import static io.restassured.RestAssured.given;
 import static org.testng.Assert.assertEquals;
 
-public class S2Put01 extends PetStoreBaseUrl {
+public class S4Get02 extends PetStoreBaseUrl {
     /*
     Given
-            https://petstore.swagger.io/v2/pet
+            https://petstore.swagger.io/v2/pet:id
+    When
+        User sends Get request
+    Then
+        Status code is 200
     And
-            {
-                "id": 1234321,
-                "category": {
-                    "id": 0,
-                    "name": "Cat"
-                },
-                "name": "Cotton",
-                "photoUrls": [
-                    "string"
-                ],
-                "tags": [
-                    {
+        Response body is like
+                        {
+                    "id": 1234321,
+                    "category": {
                         "id": 0,
-                        "name": "My cute cat"
-                    }
-                ],
-                "status": "available"
-            }
-      When
-            User sends Put request
-      Then
-            HTTP Status Code must be 200
-      And
-            Response must be like the following
-            {
-                "id": 1234321,
-                "category": {
-                    "id": 0,
-                    "name": "Cat"
-                },
-                "name": "Cotton",
-                "photoUrls": [
-                    "string"
-                ],
-                "tags": [
-                    {
-                        "id": 0,
-                        "name": "My cute cat"
-                    }
-                ],
-                "status": "available"
-            }
+                        "name": "Cat"
+                    },
+                    "name": "Cotton",
+                    "photoUrls": [
+                        "string"
+                    ],
+                    "tags": [
+                        {
+                            "id": 0,
+                            "name": "My cute cat"
+                        }
+                    ],
+                    "status": "available"
+                }
      */
     @Test
-    public void put01() throws IOException {
+    @Order(4)
+    public void get01() throws IOException {
         //Set the url
-        spec.pathParam("first", "pet");
+        spec.pathParams("first", "pet", "second", 1234321);
 
         //Set the expected data
         Category category = new Category(0, "Cat");
@@ -80,7 +62,7 @@ public class S2Put01 extends PetStoreBaseUrl {
         System.out.println("expectedData = " + expectedData);
 
         //Send the request and get the response
-        Response response = given().spec(spec).contentType(ContentType.JSON).body(expectedData).when().put("/{first}");
+        Response response = given().spec(spec).when().get("/{first}/{second}");
         response.prettyPrint();
 
         //Do Assertion
@@ -96,6 +78,7 @@ public class S2Put01 extends PetStoreBaseUrl {
         assertEquals(tags.getId(), actualData.getTags().get(0).getId());
         assertEquals(tags.getName(), actualData.getTags().get(0).getName());
         assertEquals(expectedData.getStatus(), actualData.getStatus());
+
 
     }
 }

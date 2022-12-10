@@ -4,10 +4,10 @@ import base_urls.PetStoreBaseUrl;
 import io.restassured.http.ContentType;
 import io.restassured.response.Response;
 import org.codehaus.jackson.map.ObjectMapper;
+import org.junit.jupiter.api.Order;
 import org.junit.jupiter.api.Test;
 import pojos.Category;
 import pojos.PetStorePetPojo;
-import pojos.PetStoreUserResponsePojo;
 import pojos.Tags;
 
 import java.io.IOException;
@@ -16,7 +16,7 @@ import java.util.ArrayList;
 import static io.restassured.RestAssured.given;
 import static org.testng.Assert.assertEquals;
 
-public class S1Post01 extends PetStoreBaseUrl {
+public class S1Post extends PetStoreBaseUrl {
     /*
 Given
     https://petstore.swagger.io/v2/pet
@@ -67,6 +67,7 @@ And
  */
 
     @Test
+    @Order(1)
     public void post01() throws IOException {
         //Set the url
         spec.pathParam("first", "pet");

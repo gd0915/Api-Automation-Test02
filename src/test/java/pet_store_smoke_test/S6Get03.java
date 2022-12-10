@@ -3,6 +3,7 @@ package pet_store_smoke_test;
 import base_urls.PetStoreBaseUrl;
 import io.restassured.response.Response;
 import org.codehaus.jackson.map.ObjectMapper;
+import org.junit.jupiter.api.Order;
 import org.junit.jupiter.api.Test;
 import pojos.PetStoreUserResponsePojo;
 
@@ -11,7 +12,7 @@ import java.io.IOException;
 import static io.restassured.RestAssured.given;
 import static org.testng.Assert.assertEquals;
 
-public class S6Get02 extends PetStoreBaseUrl {
+public class S6Get03 extends PetStoreBaseUrl {
     /*
     Given
             https://petstore.swagger.io/v2/pet:id
@@ -29,6 +30,7 @@ public class S6Get02 extends PetStoreBaseUrl {
      */
 
     @Test
+    @Order(6)
     public void get02() throws IOException {
         //Set the url
         spec.pathParams("first", "pet", "second", 1234321);

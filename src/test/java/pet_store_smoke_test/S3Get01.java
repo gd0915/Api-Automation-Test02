@@ -2,15 +2,13 @@ package pet_store_smoke_test;
 
 import base_urls.PetStoreBaseUrl;
 import io.restassured.response.Response;
+import org.junit.jupiter.api.Order;
 import org.junit.jupiter.api.Test;
-import pojos.Category;
-
-import javax.xml.xpath.XPathEvaluationResult;
 
 import static io.restassured.RestAssured.given;
 import static org.hamcrest.Matchers.*;
 
-public class S3GetFindByStatus extends PetStoreBaseUrl {
+public class S3Get01 extends PetStoreBaseUrl {
     /*
     Print all "available" pets on console by using"https://petstore.swagger.io/" documentation.
     There should be more than 30 "available" pets, "fish" and "doggie" pet names must exist.
@@ -29,6 +27,7 @@ public class S3GetFindByStatus extends PetStoreBaseUrl {
      */
 
     @Test
+    @Order(3)
     public void getFindByStatus(){
         //Set the url
         spec.pathParams("first", "pet", "second", "findByStatus").

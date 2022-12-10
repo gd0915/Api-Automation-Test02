@@ -5,48 +5,23 @@ import org.codehaus.jackson.annotate.JsonProperty;
 
 @JsonIgnoreProperties(ignoreUnknown = true)
 public class PetStoreInventoryPojo {
-    private int  notAvailable;
-    private int totvs;
     private int sold;
-    private int  getNotAvailable;
+    private int teststa5;
     private int string;
     private int unavailable;
     private int pending;
     private int available;
-    @JsonProperty("Kebipmj")
-    private int kebipmj;
-    private int totvs1;
 
-    public PetStoreInventoryPojo(int notAvailable, int totvs, int sold, int getNotAvailable, int string, int unavailable, int pending, int available, int kebipmj, int totvs1) {
-        this.notAvailable = notAvailable;
-        this.totvs = totvs;
+    public PetStoreInventoryPojo(int sold, int teststa5, int string, int unavailable, int pending, int available) {
         this.sold = sold;
-        this.getNotAvailable = getNotAvailable;
+        this.teststa5 = teststa5;
         this.string = string;
         this.unavailable = unavailable;
         this.pending = pending;
         this.available = available;
-        this.kebipmj = kebipmj;
-        this.totvs1 = totvs1;
     }
 
     public PetStoreInventoryPojo() {
-    }
-
-    public int getNotAvailable() {
-        return notAvailable;
-    }
-
-    public void setNotAvailable(int notAvailable) {
-        this.notAvailable = notAvailable;
-    }
-
-    public int getTotvs() {
-        return totvs;
-    }
-
-    public void setTotvs(int totvs) {
-        this.totvs = totvs;
     }
 
     public int getSold() {
@@ -57,12 +32,12 @@ public class PetStoreInventoryPojo {
         this.sold = sold;
     }
 
-    public int getGetNotAvailable() {
-        return getNotAvailable;
+    public int getTeststa5() {
+        return teststa5;
     }
 
-    public void setGetNotAvailable(int getNotAvailable) {
-        this.getNotAvailable = getNotAvailable;
+    public void setTeststa5(int teststa5) {
+        this.teststa5 = teststa5;
     }
 
     public int getString() {
@@ -97,35 +72,15 @@ public class PetStoreInventoryPojo {
         this.available = available;
     }
 
-    public int getKebipmj() {
-        return kebipmj;
-    }
-
-    public void setKebipmj(int kebipmj) {
-        this.kebipmj = kebipmj;
-    }
-
-    public int getTotvs1() {
-        return totvs1;
-    }
-
-    public void setTotvs1(int totvs1) {
-        this.totvs1 = totvs1;
-    }
-
     @Override
     public String toString() {
         return "PetStoreInventoryPojo{" +
-                "notAvailable=" + notAvailable +
-                ", totvs=" + totvs +
-                ", sold=" + sold +
-                ", getNotAvailable=" + getNotAvailable +
+                "sold=" + sold +
+                ", teststa5=" + teststa5 +
                 ", string=" + string +
                 ", unavailable=" + unavailable +
                 ", pending=" + pending +
                 ", available=" + available +
-                ", kebipmj=" + kebipmj +
-                ", totvs1=" + totvs1 +
                 '}';
     }
 }
